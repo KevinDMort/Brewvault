@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/Login">
+
+    <fragment
+        android:id="@+id/Login"
+        android:name="com.example.brewvault.Login"
+        android:label="login"
+        tools:layout="@layout/login">
+
+        <action
+            android:id="@+id/action_Login_to_Beerlist"
+            app:destination="@id/Beerlist" />
+    </fragment>
+    <fragment
+        android:id="@+id/Beerlist"
+        android:name="com.example.brewvault.Beerlist"
+        android:label="beerlist+"
+        tools:layout="@layout/beerlist">
+
+        <action
+            android:id="@+id/action_Beerlist_to_newBeer"
+            app:destination="@id/newBeer" />
+        <action
+            android:id="@+id/action_Beerlist_to_beerDetails"
+            app:destination="@id/beerDetails" />
+    </fragment>
+    <fragment
+        android:id="@+id/newBeer"
+        android:name="com.example.brewvault.NewBeer"
+        android:label="newbeer"
+        tools:layout="@layout/newbeer" />
+    <fragment
+        android:id="@+id/beerDetails"
+        android:name="com.example.brewvault.BeerDetails"
+        android:label="beer_details"
+        tools:layout="@layout/beer_details" >
+        <action
+            android:id="@+id/action_beerDetails_to_editBeer"
+            app:destination="@id/editBeer" />
+    </fragment>
+    <fragment
+        android:id="@+id/editBeer"
+        android:name="com.example.brewvault.EditBeer"
+        android:label="edit_beer"
+        tools:layout="@layout/edit_beer" />
+</navigation>
