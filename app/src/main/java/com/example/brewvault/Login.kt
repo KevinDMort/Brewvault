@@ -31,8 +31,13 @@ class Login : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.buttonLogin.setOnClickListener {
 
-        binding.buttonFirst.setOnClickListener {
+            findNavController().navigate(R.id.action_Login_to_Beerlist)
+
+        }
+
+        binding.buttonCreateUser.setOnClickListener {
         }
     }
 
