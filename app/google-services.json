@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "719032621220",
+    "project_id": "brewvault-e465e",
+    "storage_bucket": "brewvault-e465e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:719032621220:android:c8a8e495f5e9bf4d9dee31",
+        "android_client_info": {
+          "package_name": "com.example.brewvault"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCHOuTkq9JOp6aVcjH0XSwDW0ZKdfDCFig"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
