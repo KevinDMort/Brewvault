@@ -20,7 +20,6 @@
         android:name="com.example.brewvault.Beerlist"
         android:label="beerlist"
         tools:layout="@layout/beerlist">
-
         <action
             android:id="@+id/action_Beerlist_to_newBeer"
             app:destination="@id/newBeer"/>
@@ -41,6 +40,9 @@
         <action
             android:id="@+id/action_beerDetails_to_editBeer"
             app:destination="@id/editBeer" />
+        <argument
+            android:name="beer"
+            app:argType="com.example.brewvault.Beer" />
     </fragment>
     <fragment
         android:id="@+id/editBeer"
