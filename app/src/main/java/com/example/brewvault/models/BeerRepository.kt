@@ -42,7 +42,6 @@ class BeersRepository {
             }
             override fun onFailure(call: Call<List<Beer>?>, t: Throwable) {
                 Log.d("APPLE", "onFailure")
-                Log.d("APPLE", t.message!!)
                 beerLiveData.postValue(null)
                 errorMessageLiveData.postValue(t.message)
                 Log.d("APPLE", t.message!!)

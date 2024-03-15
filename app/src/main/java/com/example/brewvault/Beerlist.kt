@@ -48,6 +48,9 @@ class Beerlist : Fragment() {
                 binding.recyclerView.adapter = adapter
             }
         }
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_Beerlist_to_newBeer)
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
