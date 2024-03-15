@@ -16,7 +16,7 @@ class MyAdapter<T>(private val items: List<T>, private val onItemClicked: (posit
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): MyViewHolder {
         // Create a new view, which defines the UI of the list item
         val view = LayoutInflater.from(viewGroup.context)
-            .inflate(R.layout.list_item, viewGroup, false)
+            .inflate(R.layout.list_item_card, viewGroup, false)
         return MyViewHolder(view, onItemClicked)
     }
 
