@@ -2,13 +2,13 @@ package com.example.brewvault
 
 import BeerAdapter
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import com.example.brewvault.databinding.BeerlistBinding
+import com.google.android.material.snackbar.Snackbar
 
 class Beerlist : Fragment() {
 
@@ -39,10 +39,15 @@ class Beerlist : Fragment() {
             // Update RecyclerView adapter with the new beer list
             beerAdapter.submitList(beerList)
         }
+        binding.fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
+        }
 
         // Fetch beer data
         beerViewModel.fetchBeerData()
     }
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
