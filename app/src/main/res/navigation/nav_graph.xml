@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/Login"
         android:name="com.example.brewvault.Login"
-        android:label="login"
+        android:label=""
         tools:layout="@layout/login">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/Beerlist"
         android:name="com.example.brewvault.Beerlist"
-        android:label="beerlist"
+        android:label=""
         tools:layout="@layout/beerlist">
         <action
             android:id="@+id/action_Beerlist_to_newBeer"

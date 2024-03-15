@@ -5,5 +5,4 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.Brewvault" parent="Base.Theme.Brewvault" />
 </resources>
