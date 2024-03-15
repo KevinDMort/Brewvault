@@ -1,14 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BeerDetails">
+    android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:id="@+id/textViewBrewery"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Brewery:"
+        android:layout_marginBottom="16dp"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/textViewBreweryValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewBrewery"
+        android:layout_alignBaseline="@id/textViewBrewery"/>
+
+    <TextView
+        android:id="@+id/textViewName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Beer Name:"
+        android:layout_below="@id/textViewBrewery"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewNameValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewName"
+        android:layout_alignBaseline="@id/textViewName"/>
+
+    <TextView
+        android:id="@+id/textViewABV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ABV:"
+        android:layout_below="@id/textViewName"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewABVValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewABV"
+        android:layout_alignBaseline="@id/textViewABV"/>
+
+    <TextView
+        android:id="@+id/textViewStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Style:"
+        android:layout_below="@id/textViewABV"
+        android:layout_marginTop="16dp"/>
+
+    <TextView
+        android:id="@+id/textViewStyleValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/textViewStyle"
+        android:layout_alignBaseline="@id/textViewStyle"/>
+
+</RelativeLayout>

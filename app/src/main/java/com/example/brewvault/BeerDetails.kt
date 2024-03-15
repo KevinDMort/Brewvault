@@ -22,7 +22,13 @@ class BeerDetails : Fragment() {
         return binding.root
     }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        val beer = args.beer
         super.onViewCreated(view, savedInstanceState)
+        binding.textViewNameValue.text = beer.name
+        binding.textViewBreweryValue.text = beer.brewery
+        binding.textViewStyleValue.text = beer.style
+        binding.textViewABVValue.text = beer.abv.toString()
+
 
     }
     override fun onDestroyView() {
