@@ -26,6 +26,9 @@
         <action
             android:id="@+id/action_Beerlist_to_beerDetails"
             app:destination="@id/beerDetails" />
+        <argument
+            android:name="beer"
+            app:argType="com.example.brewvault.Beer" />
     </fragment>
     <fragment
         android:id="@+id/newBeer"
