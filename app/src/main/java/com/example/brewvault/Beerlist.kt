@@ -51,6 +51,10 @@ class Beerlist : Fragment() {
         binding.fab.setOnClickListener {
             findNavController().navigate(R.id.action_Beerlist_to_newBeer)
         }
+        binding.swiperefresh.setOnRefreshListener {
+            beersViewModel.reload(binding.swiperefresh);
+
+        }
     }
     override fun onDestroyView() {
         super.onDestroyView()
