@@ -24,10 +24,29 @@ class BeerDetails : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         val beer = args.beer
         super.onViewCreated(view, savedInstanceState)
-        binding.textViewNameValue.text = beer.name
-        binding.textViewBreweryValue.text = beer.brewery
-        binding.textViewStyleValue.text = beer.style
-        binding.textViewABVValue.text = beer.abv.toString()
+
+        binding.textInputEditTextName.setText(beer.name)
+
+        binding.textInputEditTextBrewery.setText(beer.brewery)
+        binding.textInputEditTextHowMany.setText(beer.howMany.toString())
+        binding.textInputEditTextStyle.setText(beer.style)
+        binding.textInputEditTextABV.setText(beer.abv.toString())
+        binding.textInputEditTextVolume.setText(beer.volume.toString())
+
+
+        binding.editButton.setOnClickListener{
+            binding.textInputEditTextBrewery.isEnabled = true
+            binding.textInputEditTextName.isEnabled = true
+            binding.textInputEditTextHowMany.isEnabled = true
+            binding.textInputEditTextStyle.isEnabled = true
+            binding.textInputEditTextABV.isEnabled = true
+            binding.textInputEditTextVolume.isEnabled = true
+            binding.saveButton.visibility = View.VISIBLE
+            binding.editButton.visibility = View.GONE
+        }
+        binding.saveButton.setOnClickListener {
+            //TODO implement save beer
+        }
 
 
     }

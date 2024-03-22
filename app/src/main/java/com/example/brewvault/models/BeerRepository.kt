@@ -2,6 +2,7 @@ package com.example.brewvault.repositories
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.brewvault.Beer
 import com.example.brewvault.models.BeersService
 import retrofit2.Call
@@ -15,6 +16,7 @@ class BeersRepository {
     private val beersService: BeersService
     val beerLiveData: MutableLiveData<List<Beer>?> = MutableLiveData<List<Beer>?>()
     val errorMessageLiveData: MutableLiveData<String> = MutableLiveData()
+
     init {
         val retrofit = Retrofit.Builder()
             .baseUrl(baseUrl)
@@ -23,7 +25,7 @@ class BeersRepository {
         beersService = retrofit.create(BeersService::class.java)
         getBeers()
     }
-    fun getBeers() {
+    fun getBeers(swiperefresh: SwipeRefreshLayout? = null) {
         val call: Call<List<Beer>> = beersService.getBeers()
         call.enqueue(object : Callback<List<Beer>?> {
             override fun onResponse(
@@ -31,8 +33,8 @@ class BeersRepository {
                 response: Response<List<Beer>?>
             ) {
                 if (response.isSuccessful) {
-                    Log.d("APPLE", response.body().toString() + "HERE")
                     beerLiveData.value = response.body()
+                    swiperefresh?.isRefreshing = false
                     errorMessageLiveData.postValue("")
                 } else {
                     val message = response.code().toString() + " " + response.message()

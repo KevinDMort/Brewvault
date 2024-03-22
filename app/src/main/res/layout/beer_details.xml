@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+<RelativeLayout
+
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
@@ -11,56 +16,160 @@
         android:text="Brewery:"
         android:layout_marginTop="16dp"/>
 
-    <TextView
-        android:id="@+id/textViewBreweryValue"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutBrewery"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/textViewBrewery"
-        android:layout_alignBaseline="@id/textViewBrewery"/>
+        android:layout_below="@id/textViewBrewery"
+        android:layout_marginTop="8dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextBrewery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Repeat the above pattern for other fields (Name, ABV, Style) -->
+
+    <!-- Name -->
     <TextView
         android:id="@+id/textViewName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Beer Name:"
-        android:layout_below="@id/textViewBrewery"
+        android:layout_below="@id/textInputLayoutBrewery"
         android:layout_marginTop="16dp"/>
 
-    <TextView
-        android:id="@+id/textViewNameValue"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutName"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/textViewName"
-        android:layout_alignBaseline="@id/textViewName"/>
+        android:layout_below="@id/textViewName"
+        android:layout_marginTop="8dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- ABV -->
     <TextView
         android:id="@+id/textViewABV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ABV:"
-        android:layout_below="@id/textViewName"
+        android:layout_below="@id/textInputLayoutName"
         android:layout_marginTop="16dp"/>
 
-    <TextView
-        android:id="@+id/textViewABVValue"
-        android:layout_width="wrap_content"
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutABV"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/textViewABV"
-        android:layout_alignBaseline="@id/textViewABV"/>
+        android:layout_below="@id/textViewABV"
+        android:layout_marginTop="8dp">
 
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextABV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Style -->
     <TextView
         android:id="@+id/textViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Style:"
-        android:layout_below="@id/textViewABV"
+        android:layout_below="@id/textInputLayoutABV"
         android:layout_marginTop="16dp"/>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewStyle"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+    <!-- Volume -->
     <TextView
-        android:id="@+id/textViewStyleValue"
+        android:id="@+id/textViewVolume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/textViewStyle"
-        android:layout_alignBaseline="@id/textViewStyle"/>
+        android:text="Volume:"
+        android:layout_below="@id/textInputLayoutStyle"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutVolume"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewVolume"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- How many? -->
+    <TextView
+        android:id="@+id/textViewHowMany"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How Many?:"
+        android:layout_below="@id/textInputLayoutVolume"
+        android:layout_marginTop="16dp"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayoutHowMany"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/textViewHowMany"
+        android:layout_marginTop="8dp">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/textInputEditTextHowMany"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:enabled="false"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Edit Button -->
+
+    <Button
+        android:id="@+id/editButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Edit"
+        android:layout_below="@id/textInputLayoutHowMany"
+        android:layout_marginTop="16dp"/>
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        android:layout_below="@id/textInputLayoutHowMany"
+        android:layout_alignEnd="@id/editButton"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/>
 
 </RelativeLayout>
+</ScrollView>

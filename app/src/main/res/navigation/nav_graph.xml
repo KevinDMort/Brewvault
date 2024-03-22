@@ -37,16 +37,5 @@
         android:name="com.example.brewvault.BeerDetails"
         android:label="beer_Details"
         tools:layout="@layout/beer_details" >
-        <action
-            android:id="@+id/action_beerDetails_to_editBeer"
-            app:destination="@id/editBeer" />
-        <argument
-            android:name="beer"
-            app:argType="com.example.brewvault.Beer" />
     </fragment>
-    <fragment
-        android:id="@+id/editBeer"
-        android:name="com.example.brewvault.EditBeer"
-        android:label="edit_Beer"
-        tools:layout="@layout/edit_beer" />
 </navigation>
