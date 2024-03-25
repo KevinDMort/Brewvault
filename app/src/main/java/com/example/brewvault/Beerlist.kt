@@ -31,8 +31,9 @@ class Beerlist : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val userEmail = auth.currentUser.email
-        beersViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+        val userEmail = auth.currentUser?.email
+        if (userEmail != null) {
+            beersViewModel.reload(userEmail, binding.swiperefresh)
         }
         beersViewModel.beersLiveData.observe(viewLifecycleOwner) { beers ->
             if (beers == null) {
