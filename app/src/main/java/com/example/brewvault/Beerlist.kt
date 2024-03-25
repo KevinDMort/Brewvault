@@ -35,6 +35,9 @@ class Beerlist : Fragment() {
         if (userEmail != null) {
             beersViewModel.reload(userEmail, binding.swiperefresh)
         }
+        beersViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            // Handle error messages
+        }
         beersViewModel.beersLiveData.observe(viewLifecycleOwner) { beers ->
             if (beers == null) {
             } else {
