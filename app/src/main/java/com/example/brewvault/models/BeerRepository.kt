@@ -16,6 +16,7 @@ class BeersRepository {
     private val beersService: BeersService
     val beerLiveData: MutableLiveData<List<Beer>?> = MutableLiveData<List<Beer>?>()
     val errorMessageLiveData: MutableLiveData<String> = MutableLiveData()
+    val deleteBeerErrorMessageLiveData: MutableLiveData<String> = MutableLiveData()
     private var userEmail: String? = null
 
     init {
@@ -59,26 +60,45 @@ class BeersRepository {
             })
         }
     }
-        fun saveBeer(beer: Beer) {
-            val call: Call<List<Beer>> = beersService.saveBeer(beer)
-            call.enqueue(object : Callback<List<Beer>?> {
-                override fun onResponse(call: Call<List<Beer>?>, response: Response<List<Beer>?>) {
-                    if (response.isSuccessful) {
-                        // If successful, refresh the list of beers
-                        userEmail?.let { getBeers(it) }
-                    } else {
-                        val message = response.code().toString() + " " + response.message()
-                        errorMessageLiveData.postValue(message)
-                        Log.d("APPLE", message)
-                    }
+    fun saveBeer(beer: Beer) {
+        val call: Call<List<Beer>> = beersService.saveBeer(beer)
+        call.enqueue(object : Callback<List<Beer>?> {
+            override fun onResponse(call: Call<List<Beer>?>, response: Response<List<Beer>?>) {
+                if (response.isSuccessful) {
+                    // If successful, refresh the list of beers
+                    userEmail?.let { getBeers(it) }
+                } else {
+                    val message = response.code().toString() + " " + response.message()
+                    errorMessageLiveData.postValue(message)
+                    Log.d("APPLE", message)
                 }
+            }
 
-                override fun onFailure(call: Call<List<Beer>?>, t: Throwable) {
-                    Log.d("APPLE", "onFailure")
-                    errorMessageLiveData.postValue(t.message)
-                    Log.d("APPLE", t.message!!)
+            override fun onFailure(call: Call<List<Beer>?>, t: Throwable) {
+                Log.d("APPLE", "onFailure")
+                errorMessageLiveData.postValue(t.message)
+                Log.d("APPLE", t.message!!)
+            }
+        })
+    }
+    fun deleteBeer(id: Int)
+    {
+        val call: Call<List<Beer>> = beersService.deleteBeer(id)
+        call.enqueue(object : Callback<List<Beer>> {
+            override fun onResponse(call: Call<List<Beer>>, response: Response<List<Beer>>) {
+                if (response.isSuccessful) {
+                    userEmail?.let { getBeers(it) }
+                } else {
+                    val message = "Error: ${response.code()} ${response.message()}"
+                    deleteBeerErrorMessageLiveData.postValue(message)
+
                 }
-            })
-        }
+            }
+            override fun onFailure(call: Call<List<Beer>>, t: Throwable) {
+                deleteBeerErrorMessageLiveData.postValue(t.message)
+                Log.d("APPLE", "onFailure: ${t.message}")
+            }
+        })
+    }
 
     }

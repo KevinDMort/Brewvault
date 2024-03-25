@@ -11,6 +11,8 @@ class BeerViewModel : ViewModel() {
     private val repository: BeersRepository = BeersRepository()
     val beersLiveData: LiveData<List<Beer>?> = repository.beerLiveData
     val errorMessage: LiveData<String> = repository.errorMessageLiveData
+    val deleteBeerErrorMessage: LiveData<String> = repository.deleteBeerErrorMessageLiveData
+
     fun get(position: Int): Beer? {
         return beersLiveData.value?.get(position)
     }
@@ -21,5 +23,10 @@ class BeerViewModel : ViewModel() {
     fun saveBeer(beer: Beer)
     {
         repository.saveBeer(beer)
+    }
+
+    fun deleteBeer(id: Int)
+    {
+        repository.deleteBeer(id)
     }
 }
