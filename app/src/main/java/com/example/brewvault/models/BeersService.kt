@@ -6,10 +6,11 @@ import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Path
 
 interface BeersService {
-    @GET("beers")
-    fun getBeers(): Call<List<Beer>>
+    @GET("beers/{user}")
+    fun getBeers(@Path("user") user: String): Call<List<Beer>>
     @POST("beers")
     fun saveBeer(@Body beer: Beer): Call<List<Beer>>
     @PUT("beers")
