@@ -31,7 +31,7 @@ class Beerlist : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        val userEmail = auth.currentUser.email
         beersViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
         }
         beersViewModel.beersLiveData.observe(viewLifecycleOwner) { beers ->
