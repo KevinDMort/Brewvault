@@ -5,7 +5,7 @@
         <item name="android:navigationBarColor">@android:color/transparent</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">?attr/isLightTheme</item>
-        <item name="colorPrimary">@android:color/holo_red_dark</item>
+        <item name="colorPrimary">@color/summerBeerColor</item>
         <item name="toolbarStyle">@style/MyToolbar</item>
     </style>
     <style name="MyToolbar" parent="Widget.MaterialComponents.Toolbar">

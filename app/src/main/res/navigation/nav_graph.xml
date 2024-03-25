@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/Login"
         android:name="com.example.brewvault.Login"
-        android:label=""
+        android:label="Brewvault"
         tools:layout="@layout/login">
 
         <action
@@ -18,7 +18,7 @@
     <fragment
         android:id="@+id/Beerlist"
         android:name="com.example.brewvault.Beerlist"
-        android:label=""
+        android:label="Your Collection"
         tools:layout="@layout/beerlist">
         <action
             android:id="@+id/action_Beerlist_to_newBeer"
@@ -33,12 +33,12 @@
     <fragment
         android:id="@+id/newBeer"
         android:name="com.example.brewvault.NewBeer"
-        android:label="newbeer"
+        android:label="Add a new beer"
         tools:layout="@layout/newbeer" />
     <fragment
         android:id="@+id/beerDetails"
         android:name="com.example.brewvault.BeerDetails"
-        android:label="beer_Details"
+        android:label="@string/beer_details_placeholder_label"
         tools:layout="@layout/beer_details" >
         <action
             android:id="@+id/action_beerDetails_to_editBeer"

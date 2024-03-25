@@ -1,128 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp">
 
-    <TextView
-        android:id="@+id/textViewBrewery"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Brewery:"
-        android:layout_marginTop="16dp"/>
-
-    <EditText
-        android:id="@+id/editTextBrewery"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/textViewBrewery"
-        android:layout_marginTop="8dp"
-        android:hint="Enter Brewery Name"/>
+        android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Beer Name:"
-        android:layout_below="@id/editTextBrewery"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutBrewery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Brewery">
 
-    <EditText
-        android:id="@+id/editTextName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewName"
-        android:layout_marginTop="8dp"
-        android:hint="Enter Beer Name"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextBrewery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textViewStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Style:"
-        android:layout_below="@id/editTextName"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Beer Name">
 
-    <EditText
-        android:id="@+id/editTextStyle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewStyle"
-        android:layout_marginTop="8dp"
-        android:hint="Enter Beer Style"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textViewABV"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="ABV:"
-        android:layout_below="@id/editTextStyle"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutStyle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Style">
 
-    <EditText
-        android:id="@+id/editTextABV"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewABV"
-        android:layout_marginTop="8dp"
-        android:hint="Enter Alcohol By Volume"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textViewVolume"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Volume:"
-        android:layout_below="@id/editTextABV"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutABV"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="ABV">
 
-    <EditText
-        android:id="@+id/editTextVolume"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewVolume"
-        android:layout_marginTop="8dp"
-        android:hint="Enter Volume (in mL)"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextABV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textViewNumber"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Number:"
-        android:layout_below="@id/editTextVolume"
-        android:layout_marginTop="16dp"/>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutVolume"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Volume">
 
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewNumber"
-        android:layout_marginTop="8dp"
-        android:hint="How many do you own?"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextVolume"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="numberDecimal"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/textInputLayoutNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Number">
 
-    <TextView
-        android:id="@+id/textViewPictureUrl"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Picture URL:"
-        android:layout_below="@id/editTextNumber"
-        android:layout_marginTop="16dp"/>
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/editTextNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
-        android:id="@+id/editTextPictureUrl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/textViewPictureUrl"
-        android:layout_marginTop="8dp"
-        android:hint="Enter Picture URL"/>
-
-    <Button
-        android:id="@+id/buttonSave"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/editTextPictureUrl"
-        android:layout_marginTop="24dp"
-        android:text="Save Beer"
-        android:textColor="@android:color/white"/>
-
-</RelativeLayout>
+        <Button
+            android:id="@+id/buttonSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Save Beer"
+            android:textColor="@android:color/white"/>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

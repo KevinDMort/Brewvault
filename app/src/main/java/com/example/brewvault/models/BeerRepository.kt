@@ -50,4 +50,26 @@ class BeersRepository {
             }
         })
     }
+    fun saveBeer(beer: Beer) {
+        val call: Call<List<Beer>> = beersService.saveBeer(beer)
+        call.enqueue(object : Callback<List<Beer>?> {
+            override fun onResponse(call: Call<List<Beer>?>, response: Response<List<Beer>?>) {
+                if (response.isSuccessful) {
+                    // If successful, refresh the list of beers
+                    getBeers()
+                } else {
+                    val message = response.code().toString() + " " + response.message()
+                    errorMessageLiveData.postValue(message)
+                    Log.d("APPLE", message)
+                }
+            }
+
+            override fun onFailure(call: Call<List<Beer>?>, t: Throwable) {
+                Log.d("APPLE", "onFailure")
+                errorMessageLiveData.postValue(t.message)
+                Log.d("APPLE", t.message!!)
+            }
+        })
+    }
+
 }

@@ -18,4 +18,8 @@ class BeerViewModel : ViewModel() {
         repository.getBeers(swiperefresh)
 
     }
+    fun saveBeer(beer: Beer)
+    {
+        repository.saveBeer(beer)
+    }
 }
