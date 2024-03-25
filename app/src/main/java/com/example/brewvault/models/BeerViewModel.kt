@@ -14,8 +14,8 @@ class BeerViewModel : ViewModel() {
     fun get(position: Int): Beer? {
         return beersLiveData.value?.get(position)
     }
-    fun reload(swiperefresh: SwipeRefreshLayout) {
-        repository.getBeers(swiperefresh)
+    fun reload(email: String, swiperefresh: SwipeRefreshLayout) {
+        repository.getBeers(email, swiperefresh)
 
     }
     fun saveBeer(beer: Beer)

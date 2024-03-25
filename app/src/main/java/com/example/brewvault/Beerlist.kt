@@ -11,6 +11,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.brewvault.databinding.BeerlistBinding
 import com.example.brewvault.models.BeerViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 class Beerlist : Fragment() {
 
@@ -18,6 +19,7 @@ class Beerlist : Fragment() {
     private val binding get() = _binding!!
 
     private val beersViewModel: BeerViewModel by activityViewModels()
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -52,7 +54,7 @@ class Beerlist : Fragment() {
             findNavController().navigate(R.id.action_Beerlist_to_newBeer)
         }
         binding.swiperefresh.setOnRefreshListener {
-            beersViewModel.reload(binding.swiperefresh);
+            auth.currentUser?.email?.let { beersViewModel.reload(it,binding.swiperefresh) };
 
         }
     }
