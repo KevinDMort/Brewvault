@@ -17,6 +17,7 @@ class Beerlist : Fragment() {
 
     private var _binding: BeerlistBinding? = null
     private val binding get() = _binding!!
+    private lateinit var adapter: MyAdapter<Beer>
 
     private val beersViewModel: BeerViewModel by activityViewModels()
     private var auth: FirebaseAuth = FirebaseAuth.getInstance()
@@ -31,6 +32,7 @@ class Beerlist : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val userEmail = auth.currentUser?.email
         if (userEmail != null) {
             beersViewModel.reload(userEmail, binding.swiperefresh)
@@ -41,7 +43,7 @@ class Beerlist : Fragment() {
         beersViewModel.beersLiveData.observe(viewLifecycleOwner) { beers ->
             if (beers == null) {
             } else {
-                val adapter = MyAdapter(beers) { position ->
+                adapter = MyAdapter(beers) { position ->
                     val beer: Beer? = beersViewModel.get(position)
                     if (beer == null) {
                         return@MyAdapter
@@ -62,6 +64,27 @@ class Beerlist : Fragment() {
 
         }
     }
+    fun sortBeersBy(criteria: String) {
+        // Implement sorting logic based on the selected criteria
+        val sortedBeers = when (criteria) {
+            "Name" -> beersViewModel.beersLiveData.value?.sortedBy { it.name }
+            "Brewery" -> beersViewModel.beersLiveData.value?.sortedBy { it.brewery }
+            // Add more sorting criteria as needed
+            else -> beersViewModel.beersLiveData.value // Default: no sorting
+        }
+        // Update RecyclerView with sorted list
+        sortedBeers?.let {
+            adapter.updateItems(it)
+        }
+    }
+
+
+
+
+
+
+
+
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

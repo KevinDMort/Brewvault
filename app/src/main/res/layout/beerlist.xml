@@ -7,6 +7,26 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".Beerlist">
+    <!-- Dropdown button -->
+    <Spinner
+        android:id="@+id/spinnerSortCriteria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:padding="16dp"
+        android:entries="@array/sorting_options"/>
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/spinnerSortCriteria"
+        android:padding="16dp"
+        android:queryHint="Search for beers"/>
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
@@ -15,7 +35,7 @@
         app:layout_constraintBottom_toTopOf="@id/fab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/spinnerSortCriteria">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

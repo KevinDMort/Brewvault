@@ -1,6 +1,7 @@
 package com.example.brewvault
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,12 +11,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.navArgs
 import com.example.brewvault.databinding.BeerDetailsBinding
 import com.example.brewvault.models.BeerViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 
 class BeerDetails : Fragment() {
     private var _binding: BeerDetailsBinding? = null
     private val binding get() = _binding!!
     private val beersViewModel: BeerViewModel by activityViewModels()
+    private var auth: FirebaseAuth = FirebaseAuth.getInstance()
 
 
     private val args: BeerDetailsArgs by  navArgs()
@@ -45,8 +48,15 @@ class BeerDetails : Fragment() {
             enableEditMode()
         }
         binding.saveButton.setOnClickListener {
+            val name = binding.textInputEditTextName.text.toString()
+            val brewery = binding.textInputEditTextBrewery.text.toString()
+            val ABV = binding.textInputEditTextABV.text.toString().toDoubleOrNull() ?: 0.0
+            val number = binding.textInputEditTextHowMany.text.toString().toIntOrNull() ?: 0
+            val style = binding.textInputEditTextStyle.text.toString()
+            val volume = binding.textInputEditTextVolume.text.toString().toDoubleOrNull() ?: 0.0
+            val newBeer = Beer(beer.id, auth.currentUser?.email, brewery, name, style, ABV, volume, null, number)
+            beersViewModel.updateBeer(newBeer)
             disableEditMode()
-            beersViewModel.updateBeer(beer)
         }
         binding.deleteButton.setOnClickListener {
             val beerId = beer.id
