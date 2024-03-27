@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
+import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -74,6 +75,16 @@ class Beerlist : Fragment() {
             }
         }
 
+        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                return false
+            }
+            override fun onQueryTextChange(newText: String?): Boolean {
+                // Filter the list based on the search query
+                adapter.filter.filter(newText)
+                return true
+            }
+        })
     }
     fun sortBeersBy(criteria: String) {
         // Implement sorting logic based on the selected criteria
