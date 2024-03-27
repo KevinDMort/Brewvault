@@ -14,9 +14,9 @@ interface BeersService {
     fun getBeers(@Path("user") user: String): Call<List<Beer>>
     @POST("beers")
     fun saveBeer(@Body beer: Beer): Call<List<Beer>>
-    @PUT("beers")
-    fun updateBeer(beer: Beer): Call<List<Beer>>
+    @PUT("beers/{id}")
+    fun updateBeer(@Path("id") id: Int, @Body beer: Beer): Call<List<Beer>>
     @DELETE("beers/{id}")
-    fun deleteBeer(@Body id: Int): Call<List<Beer>>
+    fun deleteBeer(@Path("id") id: Int): Call<List<Beer>>
 
 }

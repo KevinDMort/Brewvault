@@ -84,8 +84,10 @@ class BeersRepository {
     fun deleteBeer(id: Int)
     {
         val call: Call<List<Beer>> = beersService.deleteBeer(id)
+
         call.enqueue(object : Callback<List<Beer>> {
             override fun onResponse(call: Call<List<Beer>>, response: Response<List<Beer>>) {
+
                 if (response.isSuccessful) {
                     userEmail?.let { getBeers(it) }
                 } else {
@@ -100,5 +102,26 @@ class BeersRepository {
             }
         })
     }
+    fun updateBeer(id: Int, beer:Beer)
+    {
+        val call: Call<List<Beer>> = beersService.updateBeer(id, beer)
+
+        call.enqueue(object : Callback<List<Beer>> {
+            override fun onResponse(call: Call<List<Beer>>, response: Response<List<Beer>>) {
+
+                if (response.isSuccessful) {
+                    userEmail?.let { getBeers(it) }
+                } else {
+                    val message = "Error: ${response.code()} ${response.message()}"
+                    deleteBeerErrorMessageLiveData.postValue(message)
+                }
+            }
+                override fun onFailure(call: Call<List<Beer>>, t: Throwable) {
+                    deleteBeerErrorMessageLiveData.postValue(t.message)
+                    Log.d("APPLE", "onFailure: ${t.message}")
+                }
+            })
+    }
 
     }
+

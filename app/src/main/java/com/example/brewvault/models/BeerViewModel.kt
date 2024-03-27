@@ -29,4 +29,8 @@ class BeerViewModel : ViewModel() {
     {
         repository.deleteBeer(id)
     }
+    fun updateBeer(beer: Beer)
+    {
+        repository.updateBeer(beer.id, beer)
+    }
 }
