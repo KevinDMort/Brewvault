@@ -122,6 +122,31 @@ class BeersRepository {
                 }
             })
     }
+    fun filterByName(name: String){
+    if(name.isBlank())
+    {
+        userEmail?.let { getBeers(it) }
+    }
+    else{
+        beerLiveData.value=beerLiveData.value?.filter {beer -> beer.name!!.contains(name,ignoreCase = true) ?: false }
+    }
+    }
+    fun filterByBrewery(brewery: String){
+        if(brewery.isBlank())
+        {
+            userEmail?.let { getBeers(it) }
+        }
+        else{
+            beerLiveData.value=beerLiveData.value?.filter {beer -> beer.brewery!!.contains(brewery,ignoreCase = true) ?: false}
+        }
+    }
+    fun filterByNumber(number: Int)
+    {
+        beerLiveData.value = beerLiveData.value?.filter { beer ->
+            beer.howMany >= number
+        }
+    }
+
 
     }
 

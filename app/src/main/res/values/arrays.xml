@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="sorting_options">
+        <item>Sort</item>
         <item>Name</item>
         <item>ABV</item>
+        <item>Number</item>
+    </string-array>
+
+    <string-array name="filter_options">
+        <item>Filter</item>
+        <item>Name</item>
+        <item>Brewery</item>
         <item>Number</item>
     </string-array>
 </resources>

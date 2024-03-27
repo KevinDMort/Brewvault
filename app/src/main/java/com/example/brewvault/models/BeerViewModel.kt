@@ -33,4 +33,15 @@ class BeerViewModel : ViewModel() {
     {
         repository.updateBeer(beer.id, beer)
     }
+    fun filterByName(name: String){
+        repository.filterByName(name)
+    }
+    fun filterByBrewery(brewery: String){
+    repository.filterByBrewery(brewery)
+    }
+    fun filterByNumber(number: Int)
+    {
+    repository.filterByNumber(number)
+    }
+
 }

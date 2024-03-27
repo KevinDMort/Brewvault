@@ -68,6 +68,10 @@ class Beerlist : Fragment() {
         binding.spinnerSortCriteria.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val selectedItem = parent?.getItemAtPosition(position).toString()
+                if(selectedItem =="Sort")
+                {
+                    return
+                }
 
                 sortBeersBy(selectedItem)
             }
@@ -75,16 +79,28 @@ class Beerlist : Fragment() {
             }
         }
 
-        binding.searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                return false
+        binding.buttonFilter.setOnClickListener {
+            val selected = binding.spinnerFilterCriteria.selectedItem.toString()
+            val input = binding.inputText.text.toString().trim()
+            when(selected)
+            {
+                "Filter" -> {
+                }
+                "Name" -> {
+                    beersViewModel.filterByName(input)
+                }
+                "Brewery" -> {
+                    beersViewModel.filterByBrewery(input)
+
+                }
+                "Number"->{
+                    beersViewModel.filterByNumber(input.toInt())
+
+                }
+
             }
-            override fun onQueryTextChange(newText: String?): Boolean {
-                // Filter the list based on the search query
-                adapter.filter.filter(newText)
-                return true
-            }
-        })
+        }
+
     }
     fun sortBeersBy(criteria: String) {
         // Implement sorting logic based on the selected criteria

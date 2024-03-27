@@ -7,26 +7,43 @@
     android:layout_height="match_parent"
     android:padding="16dp"
     tools:context=".Beerlist">
-    <!-- Dropdown button -->
     <Spinner
         android:id="@+id/spinnerSortCriteria"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:padding="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:entries="@array/sorting_options"/>
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <Spinner
+        android:id="@+id/spinnerFilterCriteria"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/spinnerSortCriteria"
+        app:layout_constraintEnd_toEndOf="@+id/spinnerSortCriteria"
+        app:layout_constraintTop_toTopOf="@id/swiperefresh"
+        android:entries="@array/filter_options"/>
+    <EditText
+        android:id="@+id/inputText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/spinnerSortCriteria"
-        android:padding="16dp"
-        android:queryHint="Search for beers"/>
+        android:hint="Input"
+        app:layout_constraintStart_toEndOf="@id/spinnerFilterCriteria"
+        app:layout_constraintEnd_toStartOf="@id/buttonFilter"
+        app:layout_constraintTop_toTopOf="@id/spinnerFilterCriteria"
+        app:layout_constraintBottom_toBottomOf="@id/spinnerFilterCriteria"/>
+
+    <Button
+        android:id="@+id/buttonFilter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter"
+        app:layout_constraintStart_toEndOf="@id/inputText"
+        app:layout_constraintTop_toTopOf="@id/inputText"
+        app:layout_constraintBottom_toBottomOf="@id/inputText"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/swiperefresh"
@@ -35,7 +52,7 @@
         app:layout_constraintBottom_toTopOf="@id/fab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/spinnerSortCriteria">
+        app:layout_constraintTop_toBottomOf="@id/spinnerFilterCriteria">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
@@ -43,6 +60,7 @@
             android:layout_height="match_parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
