@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -63,27 +64,31 @@ class Beerlist : Fragment() {
             auth.currentUser?.email?.let { beersViewModel.reload(it,binding.swiperefresh) };
 
         }
+        binding.spinnerSortCriteria.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                val selectedItem = parent?.getItemAtPosition(position).toString()
+
+                sortBeersBy(selectedItem)
+            }
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+        }
+
     }
     fun sortBeersBy(criteria: String) {
         // Implement sorting logic based on the selected criteria
         val sortedBeers = when (criteria) {
             "Name" -> beersViewModel.beersLiveData.value?.sortedBy { it.name }
-            "Brewery" -> beersViewModel.beersLiveData.value?.sortedBy { it.brewery }
+            "ABV" -> beersViewModel.beersLiveData.value?.sortedBy { it.abv }
+            "Number" ->beersViewModel.beersLiveData.value?.sortedBy { it.howMany }
             // Add more sorting criteria as needed
             else -> beersViewModel.beersLiveData.value // Default: no sorting
-        }
+        }?.toList()
         // Update RecyclerView with sorted list
         sortedBeers?.let {
             adapter.updateItems(it)
         }
     }
-
-
-
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()
