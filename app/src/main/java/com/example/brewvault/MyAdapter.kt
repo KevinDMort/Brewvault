@@ -5,6 +5,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.Filter
+import android.widget.Filterable
 
 class MyAdapter<T>(
     private var items: List<T>,
@@ -41,4 +43,5 @@ class MyAdapter<T>(
             onItemClicked(position)
         }
     }
+
 }
